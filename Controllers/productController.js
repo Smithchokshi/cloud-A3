@@ -33,7 +33,11 @@ const getAllProducts = async (req, res) => {
     const getQuery = 'SELECT * FROM products;';
     const [rows] = await readerConnection.query(getQuery);
 
-    const products = Array.from(rows); // Convert to array
+    const products = [];
+
+    for (let i = 0; i < rows.length; i++) {
+      products.push(rows[i]);
+    }
 
     console.log(products);
 
@@ -47,6 +51,7 @@ const getAllProducts = async (req, res) => {
     });
   }
 };
+
 
 
 
