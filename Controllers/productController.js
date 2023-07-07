@@ -32,11 +32,11 @@ const getAllProducts = async (req, res) => {
   try {
     const getQuery = 'SELECT * FROM products';
     console.log(getQuery,">>>>>>>>>");
-    const rows = await readerConnection.query("SELECT * from products");
-    console.log('rows', rows);
+    const [results] = await readerConnection.query("SELECT * from products");
+    console.log('rows', results);
 
     res.status(200).json({
-      products: rows
+      products: results
     });
   } catch (e) {
     console.log(e);
