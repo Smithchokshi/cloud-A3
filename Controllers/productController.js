@@ -28,22 +28,23 @@ const addProducts = async (req, res) => {
   }
 };
 
-const getAllProducts = (req, res) => {
+const getAllProducts = async (req, res) => {
   try {
     // const getQuery = 'SELECT * FROM products';
     // console.log(getQuery,">>>>>>>>>");
-    // const results = await readerConnection.query("SELECT * from products");
-    // console.log('rows', results);
-    readerConnection.query('SELECT * FROM products', function (err, rows) {
-      if (err) {
-        console.log('error', err)
-      } else {
-        console.log('profile', rows )
-        res.status(200).json({
-          products: rows.profile
-        });
-      }
-    })
+    await readerConnection.query("SELECT * from products", (err, rows) => {
+      rows.map(e =>console.log(e));
+    });
+    // readerConnection.query('SELECT * FROM products', function (err, rows) {
+    //   if (err) {
+    //     console.log('error', err)
+    //   } else {
+    //     console.log('profile', rows )
+    //     res.status(200).json({
+    //       products: rows
+    //     });
+    //   }
+    // })
     // res.status(200).json({
     //   products: results
     // });
