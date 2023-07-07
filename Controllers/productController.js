@@ -6,7 +6,10 @@ const addProducts = async (req, res) => {
 
     const addQuery = 'INSERT INTO products SET ?';
 
+    console.log("products", products);
+
     await Promise.all(products.map(async (e) => {
+      console.log(e);
       await connection.query(addQuery, e);
       console.log('Data added');
     }));
