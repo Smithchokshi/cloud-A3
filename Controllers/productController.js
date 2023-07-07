@@ -39,6 +39,9 @@ const getAllProducts = (req, res) => {
         console.log('error', err)
       } else {
         console.log('profile', rows )
+        res.status(200).json({
+          products: rows.profile
+        });
       }
     })
     // res.status(200).json({
