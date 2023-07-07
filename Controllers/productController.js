@@ -36,10 +36,9 @@ const getAllProducts = (req, res) => {
     // console.log('rows', results);
     readerConnection.query('SELECT * FROM products', function (err, rows) {
       if (err) {
-        req.flash('error', err)
-        res.render('profile', { data: '' })
+        console.log('error', err)
       } else {
-        res.render('profile', { data: rows })
+        console.log('profile', rows )
       }
     })
     // res.status(200).json({
