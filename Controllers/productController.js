@@ -32,7 +32,7 @@ const getAllProducts = async (req, res) => {
   try {
     const getQuery = 'SELECT * FROM products';
     console.log(getQuery,">>>>>>>>>");
-    const [results] = await readerConnection.query("SELECT * from products");
+    const results = await readerConnection.query("SELECT * from products");
     console.log('rows', results);
 
     res.status(200).json({
