@@ -30,9 +30,10 @@ const addProducts = async (req, res) => {
 
 const getAllProducts = async (req, res) => {
   try {
-    const getQuery = 'SELECT * FROM products;';
-    const [rows] = await readerConnection.query(getQuery);
-
+    const getQuery = 'SELECT * FROM products';
+    console.log(getQuery,">>>>>>>>>");
+    const rows = await readerConnection.query(getQuery);
+    console.log(rows,"rows>>>>>>>>>>");
     const products = [];
 
     for (let i = 0; i < rows.length; i++) {
