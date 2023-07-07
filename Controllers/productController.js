@@ -31,12 +31,12 @@ const addProducts = async (req, res) => {
 const getAllProducts = async (req, res) => {
   try {
     const getQuery = 'SELECT * FROM products;';
-    const results = await readerConnection.query(getQuery);
+    const [rows] = await readerConnection.query(getQuery);
 
-    console.log(results);
+    console.log(rows);
 
     res.status(200).json({
-      products: results
+      products: [...rows]
     });
   } catch (e) {
     console.log(e);
@@ -45,6 +45,7 @@ const getAllProducts = async (req, res) => {
     });
   }
 };
+
 
 
 
