@@ -31,7 +31,7 @@ const addProducts = async (req, res) => {
 const getAllProducts = async (req, res) => {
   try {
 
-    const getQuery = 'SELECT * from products';
+    const getQuery = 'SELECT * from products;';
 
     const results = await readerConnection.query(getQuery);
 
