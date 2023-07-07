@@ -31,9 +31,9 @@ const addProducts = async (req, res) => {
 const getAllProducts = async (req, res) => {
   try {
 
-    const getQuery = 'SELECT * FROM products';
+    const getQuery = 'SELECT * from products';
 
-    const results = connection.query(getQuery);
+    const results = await connection.query(getQuery);
 
     console.log(results);
 
