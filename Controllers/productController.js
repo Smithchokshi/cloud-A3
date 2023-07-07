@@ -30,26 +30,12 @@ const addProducts = async (req, res) => {
 
 const getAllProducts = async (req, res) => {
   try {
-    // const getQuery = 'SELECT * FROM products';
-    // console.log(getQuery,">>>>>>>>>");
     await readerConnection.query("SELECT * from products", (err, rows) => {
-      rows.map(e =>console.log(e));
+      res.status(200).json({
+        products: rows
+      });
     });
-    // readerConnection.query('SELECT * FROM products', function (err, rows) {
-    //   if (err) {
-    //     console.log('error', err)
-    //   } else {
-    //     console.log('profile', rows )
-    //     res.status(200).json({
-    //       products: rows
-    //     });
-    //   }
-    // })
-    // res.status(200).json({
-    //   products: results
-    // });
   } catch (e) {
-    console.log(e);
     res.status(500).json({
       message: 'Internal Server Error',
     });
