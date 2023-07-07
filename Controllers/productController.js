@@ -37,14 +37,14 @@ const getAllProducts = async (req, res) => {
 
     console.log(results);
 
-    readerConnection.end();
+    // readerConnection.end();
 
     res.status(200).json({
       products: results.results
     });
   } catch (e) {
     console.log(e);
-    readerConnection.end();
+    // readerConnection.end();
     res.status(500).json({
       message: 'Internal Server Error',
     });
