@@ -40,7 +40,7 @@ const getAllProducts = async (req, res) => {
     readerConnection.end();
 
     res.status(200).json({
-      products: results
+      products: results.results
     });
   } catch (e) {
     console.log(e);
