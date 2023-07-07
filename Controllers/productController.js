@@ -31,8 +31,15 @@ const addProducts = async (req, res) => {
 const getAllProducts = async (req, res) => {
   try {
     await readerConnection.query("SELECT * from products", (err, rows) => {
+      const updatedRows = rows.map(e => {
+        return {
+          name: e.name,
+          price: e.price,
+          availability: e.availability === 1 ? true: false
+        }
+      })
       res.status(200).json({
-        products: rows
+        products: updatedRows
       });
     });
   } catch (e) {

@@ -4,7 +4,7 @@ const { addProducts, getAllProducts } = require('../Controllers/productControlle
 const router = express.Router();
 
 router.post('/store-products', addProducts);
-router.get('/list-products', getAllProducts);
+router.post('/list-products', getAllProducts);
 
 router.use((req, res) => {
   res.status(404).json({
