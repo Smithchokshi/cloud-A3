@@ -33,7 +33,7 @@ const getAllProducts = async (req, res) => {
     const getQuery = 'SELECT * FROM products';
     console.log(getQuery,">>>>>>>>>");
     const rows = await readerConnection.query(getQuery);
-    console.log(rows,"rows>>>>>>>>>>");
+    console.log(rows,"rows>>>>>>>>>>",rows?.data);
     const products = [];
 
     for (let i = 0; i < rows.length; i++) {
