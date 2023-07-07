@@ -21,7 +21,7 @@ const addProducts = async (req, res) => {
       message: "Success.",
     });
   } catch (e) {
-    await connection.end();
+    await writerConnection.end();
     res.status(500).json({
       message: 'Internal Server Error',
     });
@@ -30,26 +30,22 @@ const addProducts = async (req, res) => {
 
 const getAllProducts = async (req, res) => {
   try {
-
-    const getQuery = 'SELECT * from products;';
-
+    const getQuery = 'SELECT * FROM products;';
     const results = await readerConnection.query(getQuery);
 
     console.log(results);
 
-    // readerConnection.end();
-
     res.status(200).json({
-      products: results.results
+      products: results
     });
   } catch (e) {
     console.log(e);
-    // readerConnection.end();
     res.status(500).json({
       message: 'Internal Server Error',
     });
   }
 };
+
 
 
 module.exports = { addProducts, getAllProducts };
