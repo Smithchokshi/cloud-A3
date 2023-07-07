@@ -35,6 +35,8 @@ const getAllProducts = async (req, res) => {
 
     const results = connection.query(getQuery);
 
+    console.log(results);
+
     res.status(200).json({
       products: results
     });
