@@ -28,13 +28,20 @@ const addProducts = async (req, res) => {
   }
 };
 
-const getAllProducts = async (req, res) => {
+const getAllProducts = (req, res) => {
   try {
-    const getQuery = 'SELECT * FROM products';
-    console.log(getQuery,">>>>>>>>>");
-    const results = await readerConnection.query("SELECT * from products");
-    console.log('rows', results);
-
+    // const getQuery = 'SELECT * FROM products';
+    // console.log(getQuery,">>>>>>>>>");
+    // const results = await readerConnection.query("SELECT * from products");
+    // console.log('rows', results);
+    readerConnection.query('SELECT * FROM products', function (err, rows) {
+      if (err) {
+        req.flash('error', err)
+        res.render('profile', { data: '' })
+      } else {
+        res.render('profile', { data: rows })
+      }
+    })
     // res.status(200).json({
     //   products: results
     // });
