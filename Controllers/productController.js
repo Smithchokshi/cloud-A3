@@ -1,4 +1,4 @@
-const connection = require('../config/config');
+const { writerConnection, readerConnection } = require('../config/config');
 
 const addProducts = async (req, res) => {
   try {
@@ -10,12 +10,12 @@ const addProducts = async (req, res) => {
 
     await Promise.all(products.map(async (e) => {
       console.log(e);
-      await connection.query(addQuery, e);
+      await writerConnection.query(addQuery, e);
       console.log('Data added');
     }));
 
 
-    await connection.end();
+    await writerConnection.end();
 
     res.status(200).json({
       message: "Success.",
@@ -33,15 +33,18 @@ const getAllProducts = async (req, res) => {
 
     const getQuery = 'SELECT * from products';
 
-    const results = await connection.query(getQuery);
+    const results = await readerConnection.query(getQuery);
 
     console.log(results);
+
+    readerConnection.end();
 
     res.status(200).json({
       products: results
     });
   } catch (e) {
     console.log(e);
+    readerConnection.end();
     res.status(500).json({
       message: 'Internal Server Error',
     });
