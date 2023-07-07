@@ -12,7 +12,7 @@ app.use(cors());
 
 app.use('/', productsRoute);
 
-const PORT = process.env.PORT || 80;
+const PORT = process.env.PORT || 5005;
 
 server.listen(PORT, () => {
   console.log('Server is running', PORT);
