@@ -14,14 +14,10 @@ const addProducts = async (req, res) => {
       console.log('Data added');
     }));
 
-
-    await writerConnection.end();
-
     res.status(200).json({
       message: "Success.",
     });
   } catch (e) {
-    await writerConnection.end();
     res.status(500).json({
       message: 'Internal Server Error',
     });
