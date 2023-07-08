@@ -35,7 +35,7 @@ const getAllProducts = async (req, res) => {
         return {
           name: e.name,
           price: e.price,
-          availability: e.availability === 1 ? true: false
+          availability: e.availability === 1
         }
       })
       res.status(200).json({
