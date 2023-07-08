@@ -2,7 +2,7 @@ const mysql = require('mysql');
 
 
 const writerConnection = mysql.createConnection({
-    host: 'clouda3-instance-1.ckpbypmpghkk.us-east-1.rds.amazonaws.com',
+    host: 'clouda3.cluster-ckpbypmpghkk.us-east-1.rds.amazonaws.com',
     user: 'admin',
     password: 'Smith123',
     database: 'cloudA3'
